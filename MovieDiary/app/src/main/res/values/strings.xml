@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">Movie Diary</string>
+
+    <string name="register_activity">Register Movie</string>
+    <string name="register_movie_button_label">Register Movie</string>
+
+    <string name="displaymovies_activity">All Movies</string>
+    <string name="display_movies_button_label">Display Movies</string>
+
+    <string name="favourites_button_label">Favourites</string>
+    <string name="edit_movies_button_label">Edit Movies</string>
+    <string name="search_button_label">Search</string>
+    <string name="ratings_button_label">Ratings</string>
+
+
+    <string name="hint">Damn girl</string>
+
+
+</resources>
