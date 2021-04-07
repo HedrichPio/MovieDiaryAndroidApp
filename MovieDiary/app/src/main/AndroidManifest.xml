@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieDiary">
-        <activity android:name=".EditSingleMovie"></activity>
+        <activity android:name=".RatingsActivity"></activity>
+        <activity android:name=".EditSingleMovie" />
         <activity android:name=".EditMovies" />
         <activity android:name=".Favourites" />
         <activity android:name=".MainActivity">

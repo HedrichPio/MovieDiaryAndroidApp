@@ -135,6 +135,7 @@
         android:layout_marginBottom="25dp"
         android:padding="12dp"
         android:text="@string/ratings_button_label"
+        android:onClick="openRatings"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:backgroundTint="@color/white"

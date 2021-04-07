@@ -49,18 +49,6 @@ public class EditMovies extends AppCompatActivity {
         // Attach the adapter to a ListView
         editmovies_listview_e.setAdapter(adapter);
 
-//        movietitles_array = new String[movieList.size()];
-//
-//        for(int m=0; m<movieList.size();m++){
-//
-//            movietitles_array[m]=movieList.get(m).getTitle();
-//
-//        }
-//
-//
-//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, movietitles_array);
-//
-//        editmovies_listview_e.setAdapter(adapter);
 
         editmovies_listview_e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

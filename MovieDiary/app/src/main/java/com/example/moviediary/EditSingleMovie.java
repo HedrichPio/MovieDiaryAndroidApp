@@ -237,7 +237,7 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
                     showAlertDialog("Failed to Update", "Details were not updated, try again");
                 }
             }
-            
+
     }
 
 }

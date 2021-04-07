@@ -44,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(edit);
     }
 
+    public void openRatings(View view){
+        Intent edit = new Intent(this, RatingsActivity.class);
+        startActivity(edit);
+    }
+
     
 }
