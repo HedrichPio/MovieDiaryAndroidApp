@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,9 @@ public class RatingsActivity extends AppCompatActivity {
     String[] movietitles_array;
     DatabaseHelper DB = new DatabaseHelper(this);
     String value = "";
+
+    public static final String EXTRA_MOVIE_TITLE = "com.example.editmoviesactivity.extra.REPLY";
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -45,6 +49,7 @@ public class RatingsActivity extends AppCompatActivity {
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, android.R.id.text1, movietitles_array);
 
+        listvew_r.setBackgroundResource(R.drawable.rounded_corner_rectangle);
         listvew_r.setAdapter(adapter);
 
         listvew_r.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -67,12 +72,12 @@ public class RatingsActivity extends AppCompatActivity {
             showAlertDialog("No Items Selected!","Please Select a Movie and try Again.");
         }
         else{
-            showAlertDialog("Selected!",value);
 
-//            Intent editIntent = new Intent(this,EditSingleMovie.class);
-//            editIntent.putExtra(EXTRA_MOVIE,movie);
-//
-//            startActivity(editIntent);
+            Intent ratingIntent = new Intent(this,SingleRatingActivity.class);
+
+            ratingIntent.putExtra(EXTRA_MOVIE_TITLE,value);
+
+            startActivity(ratingIntent);
         }
 
     }

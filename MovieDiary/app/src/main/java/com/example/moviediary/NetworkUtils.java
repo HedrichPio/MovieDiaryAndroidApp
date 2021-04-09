@@ -1,7 +1,6 @@
 package com.example.moviediary;
 
 import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,8 +11,9 @@ import java.net.URL;
 public class NetworkUtils {
 
 
-    private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
+    //private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
+    private static final String TAG = "MyActivity";
 
 
     private static String getRatingInfo(String url){
@@ -28,8 +28,11 @@ public class NetworkUtils {
             URL requestURL = new URL(url);
 
             urlConnection = (HttpURLConnection) requestURL.openConnection();
+
             urlConnection.setRequestMethod("GET");
+
             urlConnection.connect();
+
 
             InputStream inputStream = urlConnection.getInputStream();
 
@@ -71,22 +74,21 @@ public class NetworkUtils {
             }
         }
 
-        Log.d(LOG_TAG, JSONString);
+        Log.d(TAG, JSONString);
         return JSONString;
     }
 
 
-    static String getMovieID(String movie_title){
+    static String getMovieIDasJson(String movie_title){
 
         String url = "https://imdb-api.com/en/API/SearchTitle/k_b859c54x/"+ movie_title;
-
 
         return getRatingInfo(url);
 
     }
 
 
-    static String getMovieRating(String movie_ID){
+    static String getMovieRatingasJson(String movie_ID){
 
         String url =  "https://imdb-api.com/en/API/UserRatings/k_b859c54x/" + movie_ID;
 

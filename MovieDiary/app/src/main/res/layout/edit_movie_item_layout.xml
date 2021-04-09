@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rounded_corner_rectangle"
-    android:padding="15dp">
+    android:background="@drawable/rounded_corner_rectangle">
 
     <TextView
         android:id="@+id/edit_movietitle_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:padding="7dp"/>
 
 </LinearLayout>
