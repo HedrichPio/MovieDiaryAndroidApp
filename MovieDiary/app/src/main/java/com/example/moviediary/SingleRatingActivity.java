@@ -7,22 +7,30 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 
 public class SingleRatingActivity extends AppCompatActivity {
 
-    String movie_title;
+    //declare variables
+    String movie_id,img_url;
 
+    //declare ui components
     TextView movietitle_textview_sra;
     ImageView moviethumbnail_imageview_sra;
+
+    private static final String TAG = "MyActivity";
 
 
 
@@ -36,28 +44,23 @@ public class SingleRatingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        movie_title = intent.getStringExtra(RatingsActivity.EXTRA_MOVIE_TITLE);
+        movie_id = intent.getStringExtra(MoviesAPIActivity.EXTRA_MOVIE_ID);
+        img_url = intent.getStringExtra(MoviesAPIActivity.EXTRA_MOVIE_IMG);
 
         moviethumbnail_imageview_sra = findViewById(R.id.movie_thumbnail_imageview);
         movietitle_textview_sra = findViewById(R.id.single_ratingact_textview);
 
-        getMovieID(movie_title);
+        Log.d(TAG, movie_id);
+        Log.d(TAG, img_url);
+
+
+        setImage(img_url);
+
+        getMovieRating(movie_id);
 
     }
 
-    private void getMovieID(String name){
-
-        Thread t1 = new Thread(new Runnable()  {
-            @Override
-            public void run() {
-                extractIDfromJson(NetworkUtils.getMovieIDasJson(name));
-            }
-        });
-        t1.start();
-
-
-    }
-
+//method to get the rating for given movie id
     private void getMovieRating(String ID){
 
         Thread t2 = new Thread(new Runnable()  {
@@ -70,49 +73,8 @@ public class SingleRatingActivity extends AppCompatActivity {
 
     }
 
-    private void extractIDfromJson(String s){
 
-        String imgurl = null;
-        Bitmap imgbitmap = null;
-
-
-        try {
-            JSONObject jsonObject = new JSONObject(s);
-
-            JSONArray jsonArray = jsonObject.getJSONArray("results");
-
-            JSONObject jsonObject1 = jsonArray.getJSONObject(0);
-
-            String id = jsonObject1.getString("id");
-
-            imgurl = jsonObject1.getString("image");
-
-
-            InputStream is = null;
-
-            is = new URL(imgurl).openStream();
-
-            imgbitmap = BitmapFactory.decodeStream(is);
-
-            updateImageview(imgbitmap);
-
-            extractRatingfromJson(NetworkUtils.getMovieRatingasJson(id));
-
-
-
-        }
-        catch (Exception e) {
-
-            // update the UI to show failed results.
-            updateUI("JSON Retrieval Failed");
-
-            e.printStackTrace();
-
-        }
-    }
-
-
-
+    //method to get the rating from the json objects
     private void extractRatingfromJson(String s){
 
         try {
@@ -127,12 +89,64 @@ public class SingleRatingActivity extends AppCompatActivity {
         catch (Exception e) {
             // update the UI to show failed results.
             e.printStackTrace();
-            updateUI("No Ratings Yet");
 
         }
     }
 
 
+    //method to the get the image from the url
+    private void setImage(String url){
+
+        Log.d(TAG, url);
+
+        try {
+
+            Thread t2 = new Thread(new Runnable()  {
+                Bitmap imgbitmap = null;
+                InputStream is = null;
+
+
+                @Override
+                public void run() {
+                    try {
+                        is = new URL(url).openStream();
+                    }
+
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    imgbitmap = BitmapFactory.decodeStream(is);
+
+                    if (imgbitmap != null) {
+
+                        updateImageView(imgbitmap);
+
+                    }
+                    else {
+                        // If none are found, update the UI to
+                        Log.d(TAG, "bitmap null");
+
+                    }
+                }
+            });
+            t2.start();
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            Log.d(TAG, e.toString());
+
+        }
+
+
+
+
+    }
+
+
+//method to update the Textview with the rating extracted
     private void updateUI(String rate){
 
         runOnUiThread(new Runnable() {
@@ -147,16 +161,24 @@ public class SingleRatingActivity extends AppCompatActivity {
     }
 
 
-    private void updateImageview(Bitmap imgbitmp){
+    //method to set the image in the imageview
+    private void updateImageView(Bitmap bitmap){
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+        try {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
 
-                moviethumbnail_imageview_sra.setImageBitmap(imgbitmp);
+                    moviethumbnail_imageview_sra.setImageBitmap(bitmap);
 
-        } });
+                }
+            });
+        } catch (Exception e) {
+            Log.d(TAG, "bitmap error");
+            e.printStackTrace();
+        }
 
     }
+
 
 }

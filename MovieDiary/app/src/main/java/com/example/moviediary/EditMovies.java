@@ -20,15 +20,14 @@ import java.util.ListIterator;
 
 public class EditMovies extends AppCompatActivity {
 
-
+//initialise the UI components
     ListView editmovies_listview_e;
 
+    //initialise a database instance
     DatabaseHelper DB = new DatabaseHelper(this);
 
+    //initialise an arraylist to store movie objects
     ArrayList<Movie> movieList = new ArrayList<>();
-
-    String[] movietitles_array ;
-
 
 
     public static final String EXTRA_MOVIE = "com.example.twoactivities.extra.REPLY";
@@ -72,6 +71,9 @@ public class EditMovies extends AppCompatActivity {
 
 
     }
+
+
+    //method to show alert dialogs when required
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -89,7 +91,7 @@ public class EditMovies extends AppCompatActivity {
 
 
 
-
+//method to open new activity to edit a single movie
     public void showMoviestoEdit(String movie){
 
         Intent editIntent = new Intent(this,EditSingleMovie.class);

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    //initialise db name, table name and columns
     public static final String DATABASE_NAME = "movie.db";
     public static final String TABLE_NAME = "all_movies_table";
     public static final String COL_1 = "ID";
@@ -37,6 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    //create table with columns
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -62,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    //method to add a user entered movie to the database
     public Boolean addMovietoDB(Movie movie){
 
         myDB = this.getWritableDatabase();
@@ -88,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
+//method to get all the movies in the database into an arraylist
     @RequiresApi(api = Build.VERSION_CODES.N)
     public ArrayList<Movie> getAllMovies(){
 
@@ -126,7 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
+//method to make a movie as favourite
     public Boolean updateFavourites(String title, int isFavourite){
 
 
@@ -147,8 +150,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public Boolean updateMovie(String title, Movie movie){
 
+    //method to update a movie details
+    public Boolean updateMovie(String title, Movie movie){
 
         myDB = this.getWritableDatabase();
 
@@ -174,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
+//method to delete a movie
     public void deleteMovie(String name){
 
         myDB = this.getWritableDatabase();

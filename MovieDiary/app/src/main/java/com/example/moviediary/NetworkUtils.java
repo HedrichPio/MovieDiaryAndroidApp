@@ -16,6 +16,7 @@ public class NetworkUtils {
     private static final String TAG = "MyActivity";
 
 
+    //method to get the json objects from the internet
     private static String getRatingInfo(String url){
 
         HttpURLConnection urlConnection = null;
@@ -79,18 +80,21 @@ public class NetworkUtils {
     }
 
 
+    //method to get the json object with all the titles similar to the given title
     static String getMovieIDasJson(String movie_title){
 
-        String url = "https://imdb-api.com/en/API/SearchTitle/k_b859c54x/"+ movie_title;
+        String url = "https://imdb-api.com/en/API/SearchTitle/k_buwntvj4/"+ movie_title;
 
         return getRatingInfo(url);
 
     }
 
 
+
+    //method to get the json object with ratings for the given ID
     static String getMovieRatingasJson(String movie_ID){
 
-        String url =  "https://imdb-api.com/en/API/UserRatings/k_b859c54x/" + movie_ID;
+        String url =  "https://imdb-api.com/en/API/UserRatings/k_buwntvj4/" + movie_ID;
 
         return getRatingInfo(url);
     }

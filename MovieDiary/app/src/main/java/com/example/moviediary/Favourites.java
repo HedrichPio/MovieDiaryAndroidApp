@@ -22,12 +22,18 @@ import java.util.ArrayList;
 
 public class Favourites extends AppCompatActivity {
 
+    //initialise UI components
     ListView fav_listview_f;
     Button fav_save_button_f;
 
+
+    //database instance
     DatabaseHelper DB = new DatabaseHelper(this);
 
+    //declare arraylist to store movie objects
     ArrayList<Movie> favMovieList = new ArrayList<>();
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -42,9 +48,9 @@ public class Favourites extends AppCompatActivity {
     }
 
 
+    //method to show all favourites
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void showFavs() {
-
 
         for(Movie m : DB.getAllMovies()){
 
@@ -66,6 +72,8 @@ public class Favourites extends AppCompatActivity {
 
     }
 
+
+//method to save the new favourite state of movie objects
     public void saveFavstoDB(View view){
 
         int i=0;
@@ -83,10 +91,13 @@ public class Favourites extends AppCompatActivity {
     }
 
 
+    //method to show toast messages when necessary
     private void showToastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
+
+    //method to show alert dialogs on requirements
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

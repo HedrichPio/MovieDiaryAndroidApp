@@ -16,12 +16,15 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
+    //declare ui Compnonents
     EditText search_edittext_s;
     ListView search_listview_s;
     Button search_button_s;
 
+    //database instance
     DatabaseHelper DB = new DatabaseHelper(this);
 
+    //variables to store movies
     ArrayList<Movie> movieList = new ArrayList<>();
     ArrayList<Movie> selectedMoviesList = new ArrayList<>();
 
@@ -39,6 +42,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
+//method to search for movies which matches user entry
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void lookupValueinDB(View view) {
 
@@ -58,6 +62,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
+    //method to load query results on the UI
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void loadMoviestoListview(String query){
 
@@ -91,7 +96,7 @@ public class SearchActivity extends AppCompatActivity {
         // Attach the adapter to a ListView
     }
 
-
+//method to display alert dialogs on requirement
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -102,6 +107,7 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+    //method to display alert dialog when no movies found
     public void showAlertDialogforEmpty(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

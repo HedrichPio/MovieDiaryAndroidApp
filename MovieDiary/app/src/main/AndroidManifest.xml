@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieDiary">
-
+        <activity android:name=".MoviesAPIActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegisterMovie"
             android:label="@string/register_activity"
@@ -37,16 +36,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.MainActivity" />
         </activity>
-
         <activity
             android:name=".SearchActivity"
-            android:label="Search"
+            android:label="Search a Movie"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.MainActivity" />
         </activity>
-
         <activity
             android:name=".SingleRatingActivity"
             android:label="Ratings"
@@ -55,7 +52,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.RatingsActivity" />
         </activity>
-
         <activity
             android:name=".RatingsActivity"
             android:label="Ratings"
@@ -64,34 +60,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.MainActivity" />
         </activity>
-
         <activity
             android:name=".EditMovies"
-            android:label="Ratings"
+            android:label="Select Movie to Edit"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.MainActivity" />
         </activity>
-
         <activity
             android:name=".EditSingleMovie"
-            android:label="Ratings"
+            android:label="Edit Movie"
             android:parentActivityName=".EditMovies">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.EditMovies" />
         </activity>
-
         <activity
             android:name=".Favourites"
-            android:label="Ratings"
+            android:label="Favourites"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moviediary.MainActivity" />
         </activity>
-
     </application>
 
 </manifest>

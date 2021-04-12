@@ -18,12 +18,14 @@ import java.util.ArrayList;
 
 public class DisplayMovies extends AppCompatActivity {
 
-
+    //initialise a ui components
     ListView movies_listview_am;
     Button savefav;
 
+    //initialise a database instance
     DatabaseHelper DB = new DatabaseHelper(this);
 
+    //initialise an arraylist to store movie objects
     ArrayList<Movie> movieList = new ArrayList<>();
 
 
@@ -52,7 +54,7 @@ public class DisplayMovies extends AppCompatActivity {
     }
 
 
-
+//method to save the favourite state in the database
     public void savetoDB(View view){
 
         int i=0;
@@ -69,11 +71,16 @@ public class DisplayMovies extends AppCompatActivity {
         showToastMessage("Successfully Saved");
     }
 
+
+
+//method to display toast messages on requirement
     private void showToastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
 
+
+    //method to display an alert dialog on requirement
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Movie {
 
+    //initialise movie properties
     String title;
     int year;
     String director;
@@ -12,8 +13,10 @@ public class Movie {
     String review;
     Boolean isFavourite;
 
+    //constructor
     public Movie() { }
 
+    //constructor with properties
     public Movie(String title, int year, String director, String actors, int rating, String review, Boolean isFavourite) {
         this.title = title;
         this.year = year;
@@ -24,6 +27,8 @@ public class Movie {
         this.isFavourite = isFavourite;
     }
 
+
+    //declare getters and setters
     public String getTitle() {
         return title;
     }
@@ -51,7 +56,6 @@ public class Movie {
     public String getActors() {
         return actors;
     }
-
 
     public void setActors(String actors) {
         this.actors = actors;

@@ -19,8 +19,10 @@ import java.util.ArrayList;
 
 public class RatingsActivity extends AppCompatActivity {
 
+    //ui components
     ListView listvew_r;
 
+    //varibles
     ArrayList<Movie> allmovies_List = new ArrayList<>();
     String[] movietitles_array;
     DatabaseHelper DB = new DatabaseHelper(this);
@@ -66,6 +68,7 @@ public class RatingsActivity extends AppCompatActivity {
                     value = adapter.getItem(position);
 
 
+
                 }
             });
         } else {
@@ -75,6 +78,7 @@ public class RatingsActivity extends AppCompatActivity {
         }
     }
 
+    //opens new activity with all the movies from the internet having the title similar to the user input
     public void showMovieRatings(View view){
 
         if(value.equals("")){
@@ -82,7 +86,7 @@ public class RatingsActivity extends AppCompatActivity {
         }
         else{
 
-            Intent ratingIntent = new Intent(this,SingleRatingActivity.class);
+            Intent ratingIntent = new Intent(this,MoviesAPIActivity.class);
 
             ratingIntent.putExtra(EXTRA_MOVIE_TITLE,value);
 
@@ -91,6 +95,7 @@ public class RatingsActivity extends AppCompatActivity {
 
     }
 
+    //method to show alert dialogs in requirement
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -101,6 +106,8 @@ public class RatingsActivity extends AppCompatActivity {
 
     }
 
+
+    //method to show alert dialogs if no movies found
     public void showAlertDialogForEmpty(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
+//method to open registration  activity
     public void openRegisterMovie(View view) {
 
         Intent register = new Intent(this,RegisterMovie.class);
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //method to open display all movies  activity
     public void openDisplayMovies(View view) {
 
         Intent displaymovies = new Intent(this,DisplayMovies.class);
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //method to open activity containing all favourites
     public void openFavourites(View view) {
 
         Intent favourites = new Intent(this,Favourites.class);
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //method to open activity to edit movies
     public void openEditMovies(View view){
 
         Intent edit = new Intent(this, EditMovies.class);
@@ -46,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //method to open the actvity with the search function
     public void openSearch(View view){
         Intent search = new Intent(this, SearchActivity.class);
         startActivity(search);
     }
 
 
+//method to open the activity to show movie ratings
     public void openRatings(View view){
         Intent rating = new Intent(this, RatingsActivity.class);
         startActivity(rating);
     }
-
-
 
 
     

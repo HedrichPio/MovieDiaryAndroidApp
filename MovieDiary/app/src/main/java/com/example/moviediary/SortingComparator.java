@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 public class SortingComparator implements Comparator<Movie> {
 
+    //comparator to sort movies in alphabetical order
+    
     @Override
     public int compare(Movie o1, Movie o2) {
 

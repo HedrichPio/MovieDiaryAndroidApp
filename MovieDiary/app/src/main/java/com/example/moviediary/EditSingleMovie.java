@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,21 +22,27 @@ import java.util.ArrayList;
 
 public class EditSingleMovie extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    //initialising the UI components
     EditText title_edittext_esm, director_edittext_esm, actors_edittext_esm, review_edittext_esm;
     RatingBar ratings_ratingbar_esm,ratings2_ratingbar_esm;
     Spinner year_spinner_esm, favourite_spinner_esm;
-
     Button update_button_esm;
 
+    //array to store movie objects
     ArrayList<Movie> moviesList = new ArrayList<>();
 
+    //array for the favourite spinner
     String[] fav_array = {"Favourite", "Not Favourite"};
 
+    //declaring varibles to store values
     String message,s_title,s_director,s_actors,s_review;
     int s_year, s_rating;
     Boolean s_fav;
 
+    //database instance
     DatabaseHelper DB = new DatabaseHelper(this);
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -47,6 +54,7 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
 
         message = intent.getStringExtra(EditMovies.EXTRA_MOVIE);
 
+        //connecting the initialised UI components with the components in the activity
         title_edittext_esm = findViewById(R.id.single_title_edittext);
         year_spinner_esm = findViewById(R.id.single_year_spinner);
         director_edittext_esm = findViewById(R.id.single_director_edittext);
@@ -73,7 +81,6 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
         if (year_spinner_esm != null) {
             year_spinner_esm.setAdapter(adapter);
         }
-
 
 
         if (favourite_spinner_esm != null) {
@@ -105,8 +112,11 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> parent) {}
 
 
+
+
     //method returns an arraylist containing all the year from 1985 to 2021
     private ArrayList<Integer> getYears(){
+
         ArrayList<Integer> yearsArray = new ArrayList<>();
 
         for(int i = 2021; i>=1895; i--){
@@ -116,7 +126,7 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
     }
 
 
-
+//method to get all the movies from the database
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void getMovieDetails(String title){
 
@@ -135,6 +145,9 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
 
     }
 
+
+
+    //method to update the UI components with the values in the database
     private void setValuesInUI(Movie m){
 
         title_edittext_esm.setText(m.getTitle());
@@ -171,17 +184,35 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
     }
 
 
+//method to show alert dialogs
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(messageType);
         alert.setMessage(message);
-        alert.setPositiveButton("OK",null);
+        alert.setPositiveButton("OK", null);
         alert.show();
 
     }
 
 
+//method to show alert dialogs on completion
+    public void showAlertDialogonComplete(String messageType, String message){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(messageType);
+        alert.setMessage(message);
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onBackPressed();
+            }
+        });
+        alert.show();
+
+    }
+
+//method to save newly entered values to database
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void saveNewValuestoDB(View view) {
 
@@ -231,7 +262,7 @@ public class EditSingleMovie extends AppCompatActivity implements AdapterView.On
                     buffer.append("Rating : "+s_rating + "\n");
                     buffer.append("Review : "+s_review);
 
-                    showAlertDialog("Movie Details Updated as :",buffer.toString());
+                    showAlertDialogonComplete("Movie Details Updated as :",buffer.toString());
                 }
                 else{
                     showAlertDialog("Failed to Update", "Details were not updated, try again");

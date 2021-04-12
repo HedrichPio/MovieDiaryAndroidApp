@@ -20,14 +20,18 @@ import java.util.ArrayList;
 
 public class RegisterMovie extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    //declare ui components
     EditText title_edittext_r, director_edittext_r, actors_edittext_r, review_edittext_r;
     Spinner year_spinner_r, ratings_spinner_r;
     Button save_button_r;
 
+    //declare varibles
     String title,director,actors,review;
     int year, rating;
 
+    //database instance
     DatabaseHelper db = new DatabaseHelper(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +116,7 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
+    //method to show alert dialog on requirement
     public void showAlertDialog(String messageType, String message){
 
         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterMovie.this);
@@ -123,6 +128,7 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
+    //method to get the user data and save movie to database
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void saveMovie(View view) {
 
@@ -192,7 +198,7 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
-
+//method to create movie objects and add to the database
     @RequiresApi(api = Build.VERSION_CODES.N)
     private Boolean createMovieObject(String mtitle, int myear, String mdirector, String mactors, int mrating, String mreview){
 
@@ -225,6 +231,7 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
+    //method to show toast messages on requirement
     private void showToastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
