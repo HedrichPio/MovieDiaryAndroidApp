@@ -2,8 +2,10 @@ package com.example.moviediary;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,11 +54,15 @@ public class Favourites extends AppCompatActivity {
 
         }
 
-        MovieAdapter adapter = new MovieAdapter(this, favMovieList);
 
-        // Attach the adapter to a ListView
-        fav_listview_f.setAdapter(adapter);
+        if (!favMovieList.isEmpty()) {
+            MovieAdapter adapter = new MovieAdapter(this, favMovieList);
 
+            // Attach the adapter to a ListView
+            fav_listview_f.setAdapter(adapter);
+        } else {
+            showAlertDialog("No Favourites", "Favourites will be displayed once Movies are Selected");
+        }
 
     }
 
@@ -79,6 +85,21 @@ public class Favourites extends AppCompatActivity {
 
     private void showToastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    public void showAlertDialog(String messageType, String message){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(messageType);
+        alert.setMessage(message);
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onBackPressed();
+            }
+        });
+        alert.show();
+
     }
 
 }

@@ -13,10 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:hint="Enter Movie Title"
@@ -25,20 +24,31 @@
         android:textColor="@color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/year_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:text="Enter Year"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
+
     <Spinner
         android:id="@+id/year_spinner"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:inputType="textPersonName"
@@ -46,8 +56,6 @@
         android:textColor="@color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/director_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
 
@@ -57,9 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="22dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:hint="Enter Director Name"
@@ -68,10 +76,9 @@
         android:textColor="@color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/actors_edittext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/year_spinner" />
+        app:layout_constraintStart_toEndOf="@+id/year_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
 
     <EditText
         android:id="@+id/actors_edittext"
@@ -79,9 +86,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:hint="Enter Actors/Actresses (Alex, Ben, etc...)"
@@ -90,20 +97,17 @@
         android:textColor="@color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/rating_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/director_edittext" />
 
     <Spinner
         android:id="@+id/rating_spinner"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:inputType="textPersonName"
@@ -111,8 +115,7 @@
         android:textColor="@color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/review_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/actors_edittext" />
 
@@ -122,9 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:ems="10"
         android:hint="Enter Review"
@@ -135,40 +138,24 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_spinner" />
+        app:layout_constraintStart_toEndOf="@+id/rating_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/actors_edittext" />
 
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="saveMovie"
         android:padding="12dp"
         android:text="Save"
-        android:onClick="saveMovie"
         android:textSize="18sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review_edittext"
         app:strokeColor="@color/white"
         app:strokeWidth="2dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/rounded_corner_rectangle"
-        android:text="Enter Year"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/director_edittext"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_edittext" />
 
     <TextView
         android:id="@+id/textView2"
@@ -176,11 +163,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:text="Enter Rating"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/review_edittext"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actors_edittext" />
 </androidx.constraintlayout.widget.ConstraintLayout>

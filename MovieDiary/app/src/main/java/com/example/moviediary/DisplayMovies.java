@@ -3,7 +3,10 @@ package com.example.moviediary;
 
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -35,11 +38,15 @@ public class DisplayMovies extends AppCompatActivity {
 
         movieList = DB.getAllMovies();
 
-        // Create the adapter to convert the array to views
-        MovieAdapter adapter = new MovieAdapter(this, movieList);
+        if (!movieList.isEmpty()) {
+            // Create the adapter to convert the array to views
+            MovieAdapter adapter = new MovieAdapter(this, movieList);
 
-        // Attach the adapter to a ListView
-        movies_listview_am.setAdapter(adapter);
+            // Attach the adapter to a ListView
+            movies_listview_am.setAdapter(adapter);
+        } else {
+            showAlertDialog("No Movies added", "Please add atleast one Movie to Display");
+        }
 
 
     }
@@ -64,6 +71,22 @@ public class DisplayMovies extends AppCompatActivity {
 
     private void showToastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void showAlertDialog(String messageType, String message){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(messageType);
+        alert.setMessage(message);
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onBackPressed();
+            }
+        });
+        alert.show();
+
     }
 
 

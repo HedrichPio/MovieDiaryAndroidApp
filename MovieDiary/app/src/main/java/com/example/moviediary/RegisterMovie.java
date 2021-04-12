@@ -169,8 +169,10 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
                 }
                 else{
                     showAlertDialog("Up to Date", "Movie already Exists");
-                    save_button_r.setText("Reset");
                 }
+
+                save_button_r.setText("Reset");
+
             }
         }
         else if(save_button_r.getText().equals("Reset")){
@@ -180,7 +182,7 @@ public class RegisterMovie extends AppCompatActivity implements AdapterView.OnIt
             director_edittext_r.setText("");
             actors_edittext_r.setText("");
             ratings_spinner_r.setSelection(0);
-            title_edittext_r.setText("");
+            review_edittext_r.setText("");
 
             save_button_r.setText("Save");
 

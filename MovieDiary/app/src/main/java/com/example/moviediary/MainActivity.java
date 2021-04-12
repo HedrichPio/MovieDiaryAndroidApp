@@ -38,16 +38,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void openEditMovies(View view){
 
         Intent edit = new Intent(this, EditMovies.class);
         startActivity(edit);
     }
 
-    public void openRatings(View view){
-        Intent edit = new Intent(this, RatingsActivity.class);
-        startActivity(edit);
+
+    public void openSearch(View view){
+        Intent search = new Intent(this, SearchActivity.class);
+        startActivity(search);
     }
+
+
+    public void openRatings(View view){
+        Intent rating = new Intent(this, RatingsActivity.class);
+        startActivity(rating);
+    }
+
+
+
 
     
 }
